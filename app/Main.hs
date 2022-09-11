@@ -92,6 +92,7 @@ handleTick d gs
                             else highscore gs
                     ,   snake = Snake
                             {   dir   = UP
+                            ,   moves = []
                             ,   body  = [(15, 13 + y) | y <- [0..3]]
                             ,   word  = randword r 4
                             ,   compl = 0
@@ -140,6 +141,7 @@ main = do
             ,   highscore = read hf
             ,   snake     = Snake
                     {   dir   = UP
+                    ,   moves = []
                     ,   body  = [(15, 13 + y) | y <- [0..3]]
                     ,   word  = randword rnd 4
                     ,   compl = 0

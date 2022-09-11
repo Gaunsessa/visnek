@@ -21,7 +21,7 @@ makeChar col c (x, y) =
         sSize = fromIntegral screenSize
 
 makeSnake :: Snake -> Picture
-makeSnake (Snake _ body word compl _) =
+makeSnake (Snake _ _ body word compl _) =
     pictures
         $ zipWith3 
             makeChar 
