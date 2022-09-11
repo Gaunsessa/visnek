@@ -8,11 +8,10 @@ import Snake
 import Util
 
 import System.Random
-import System.Directory
 import Graphics.Gloss
-import Graphics.Gloss.Interface.IO.Game
 import Control.Monad
-import Data.Maybe
+import System.Directory
+import Graphics.Gloss.Interface.IO.Game
 
 randapple :: [(Int, Int)] -> IO (Int, Int)
 randapple a = do

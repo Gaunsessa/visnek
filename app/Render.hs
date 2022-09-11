@@ -1,12 +1,12 @@
 module Render where
 
 import GS
-import Snake
 import Util
+import Snake
 
-import Graphics.Gloss
 import Data.Char
 import Data.Map ((!))
+import Graphics.Gloss
 
 makeChar :: FontColor -> Char -> (Int, Int) -> Picture
 makeChar col c (x, y) =

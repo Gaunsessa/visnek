@@ -1,12 +1,12 @@
 module Util where
 
+import GHC.IO
 import Codec.BMP
-import Graphics.Gloss
-import Graphics.Gloss.Interface.IO.Game
-import Data.List.Split
 import Data.Word
 import Data.List
-import GHC.IO
+import Graphics.Gloss
+import Data.List.Split
+import Graphics.Gloss.Interface.IO.Game
 
 import qualified Data.ByteString as B
 

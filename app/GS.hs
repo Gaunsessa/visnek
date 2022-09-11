@@ -3,12 +3,10 @@ module GS where
 import Util
 import Snake
 
-import Graphics.Gloss
-import Graphics.Gloss.Data.Color
 import GHC.IO
 import Codec.BMP
 import Data.Either
-import Data.List
+import Graphics.Gloss
 
 import qualified Data.Map as Map
 
