@@ -17,6 +17,8 @@ data GS = GS
     ,   highscore :: Int
     ,   snake     :: Snake
     ,   apples    :: [(Int, Int)]
+    ,   tpt       :: Float
+    ,   ct        :: Float
     }
 
 data State = MENU | CONTROL | INSERT deriving (Show, Eq)

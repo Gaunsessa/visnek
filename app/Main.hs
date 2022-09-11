@@ -76,6 +76,7 @@ handleEventInsert k gs
 handleTick :: Float -> GS -> IO GS
 handleTick d gs 
     | state gs == MENU = return gs
+    | ct gs < tpt gs = return gs { ct = ct gs + d }
     | otherwise =  do
         r <- randomIO
 
@@ -85,7 +86,7 @@ handleTick d gs
                     $ writeFile highscoreFile $ show $ length (body $ snake gs)
 
                 return GS
-                    {   state = MENU
+                    {   state     = MENU
                     ,   highscore = if length (body $ snake gs) > highscore gs 
                             then length (body $ snake gs) 
                             else highscore gs
@@ -97,6 +98,8 @@ handleTick d gs
                             ,   food  = False
                             }
                     ,   apples = []
+                    ,   tpt    = 0.5
+                    ,   ct     = 0
                     }
             Just ns1 -> do
                 let (ns2, na) = eatApple ns1 (apples gs)
@@ -106,6 +109,10 @@ handleTick d gs
                 return gs 
                     {   snake = ns2
                     ,   apples = if length (word ns2) == compl (snake gs) then nap : na else na
+                    ,   tpt = if length na < length (apples gs)
+                            then if tpt gs - 0.02 < 0.1 then 0.1 else tpt gs - 0.02
+                            else tpt gs
+                    ,   ct = 0
                     }
 
 main :: IO ()
@@ -127,11 +134,11 @@ main = do
     playIO
         (InWindow "visnek" (screenSize, screenSize) (0, 0))
         (makeColorI 1 40 36 255)
-        fps
+        60
         GS
-            {   state = MENU
+            {   state     = MENU
             ,   highscore = read hf
-            ,   snake = Snake
+            ,   snake     = Snake
                     {   dir   = UP
                     ,   body  = [(15, 13 + y) | y <- [0..3]]
                     ,   word  = randword rnd 4
@@ -139,9 +146,9 @@ main = do
                     ,   food  = False
                     }
             ,   apples = []
+            ,   tpt    = 0.5
+            ,   ct     = 0
             }
         handleRender
         handleEvent
         handleTick
-    where
-        fps = 2
