@@ -110,7 +110,7 @@ handleTick d gs
                     {   snake = ns2
                     ,   apples = if length (word ns2) == compl (snake gs) then nap : na else na
                     ,   tpt = if length na < length (apples gs)
-                            then if tpt gs - 0.02 < 0.1 then 0.1 else tpt gs - 0.02
+                            then if tpt gs - 0.02 < 0.1 then 0.1 else tpt gs - 0.004
                             else tpt gs
                     ,   ct = 0
                     }
